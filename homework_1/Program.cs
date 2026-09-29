@@ -12,39 +12,14 @@ namespace akeraminai
             {
                 try{
                     Console.Clear();
-                    Console.WriteLine("welcome stranger...");
+                    Console.WriteLine("welcome to taxi cost calculator stranger...");
 
-                    Console.Write("enter the distance: ");
-                    string distanceInput = Console.ReadLine();
-                    Console.Write("enter the price: ");
-                    string priceInput = Console.ReadLine();
+                    double distance = ReadDouble("enter the distance in km: ");
+                    double startPrice = ReadDouble("enter the starting price ($): ");
+                    double perKmPrice = ReadDouble("enter the price per km ($): ");
 
-                    if (!double.TryParse(distanceInput, out double distance))
-                    {
-                        Console.WriteLine("Error!");
-                        Console.ReadKey();
-                        return;
-                    }
-
-                    if (!double.TryParse(priceInput, out double price))
-                    {
-                        Console.WriteLine("Error!");
-                        Console.ReadKey();
-                        return;
-                    }
-
-                    if (number > secNumber)
-                    {
-                        Console.WriteLine($"{number} is bigger");
-                    }
-                    else if (number < secNumber)
-                    {
-                        Console.WriteLine($"{secNumber} is bigger");
-                    }
-                    else
-                    {
-                        Console.WriteLine("they're equal");
-                    }
+                    double price = startPrice + distance * perKmPrice;
+                    Console.WriteLine($"your taxi ride costs: {price:F2}$");
 
                     Console.ReadKey();
                 }
@@ -53,6 +28,20 @@ namespace akeraminai
                     Console.WriteLine("\nR.I.P. an error occured. press 'enter' to restart...");
                     Console.ReadLine();
                 }
+            }
+        }
+        static double ReadDouble(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+
+                if (double.TryParse(Console.ReadLine(), out double value))
+                {
+                    return value;
+                }
+
+                Console.WriteLine("invalid number input. try again.");
             }
         }
     }
