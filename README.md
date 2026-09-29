@@ -1,7 +1,7 @@
 
 # C# course
 ## by aker
-uni course sumbissions repo for practice, projects and homework
+uni course submissions repo for practice, projects and homework
 
 dependencies:
 
